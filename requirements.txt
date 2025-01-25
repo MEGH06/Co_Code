@@ -6,3 +6,4 @@ python-pptx
 pytesseract
 pillow
 camelot-py[cv]
+pandas
