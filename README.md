@@ -27,13 +27,12 @@ The final system will be deployed using **Docker** for environment consistency a
 ### 1. File-Type-Specific Preprocessing
 
 #### 1.1 PDFs
-- **Extraction Tool**: PyPDF2, pdfplumber, PyMuPDF
+- **Extraction Tool**: PyMuPDF
 - **Steps**:
   - Extract text content while maintaining order.
-  - Handle multi-column PDFs and layout patterns.
-  - Extract metadata (title, author, date).
   - Handle diagrams/images and store separately.
-  - Extract tables using camelot or tabula-py.
+  - Extract tables using camelot.
+  - Extract images using pillow.
   
 #### 1.2 DOCX (Word Documents)
 - **Extraction Tool**: python-docx
@@ -58,20 +57,20 @@ The final system will be deployed using **Docker** for environment consistency a
 - **Reintegration**: Add placeholders (e.g., [Diagram 1]) in the consolidated document.
 
 #### 2.2 Tables
-- **Extraction**: Use camelot/tabula-py (for PDFs), python-docx (for DOCX), python-pptx (for PPT).
-- **Reintegration**: Convert to clean formats like markdown, HTML, or CSV.
+- **Extraction**: Use camelot (for PDFs), python-docx (for DOCX), python-pptx (for PPT).
+- **Reintegration**: Convert to dataframes that can be processed and filtered using pandas.
 - **Post-Processing**: Reinsert tables into the consolidated document.
 
 #### 2.3 Images
 - **Extraction**: Use Pillow, PyMuPDF, python-docx, python-pptx.
-- **OCR**: Use Tesseract/Google Vision API for extracting text from images.
+- **OCR**: Use Tesseract for extracting text from images.
 - **Reintegration**: Insert image references into the consolidated document.
 
 ### 3. General Preprocessing Pipeline
 
 1. **Text Extraction**: Extract raw text and handle structure.
-2. **Image/Diagram Processing**: Extract and process non-text content.
-3. **Table Handling**: Extract and process tables into structured formats.
+2. **Image/Diagram Processing**: Extract and process non-text content. Filter important images and discard the rest.
+3. **Table Handling**: Extract and process tables into structured formats. Combine / consolidate necessary tables and discard any repetition.
 4. **Formatting and Clean-Up**: Normalize text and remove non-informative elements.
 5. **Annotation**: Annotate references for diagrams, tables, and images.
 
@@ -79,20 +78,21 @@ The final system will be deployed using **Docker** for environment consistency a
 
 1. **Combine Text**: Merge text while retaining structure.
 2. **Redundancy Removal**: Use sentence embeddings (e.g., SBERT) to remove duplicates.
-3. **Summarization**: Use summarization models (e.g., BERT, T5) to condense content.
+3. **Summarization of text**: Use Hugging Face Transformer models (e.g., BART) to summarise notes from different note documents.
 4. **Reintegration**: Reinsert annotated references for images, diagrams, and tables.
 
 ## Technologies Used
 
 - **Python Libraries**:
-  - PyPDF2, pdfplumber, PyMuPDF for PDFs
+  - PyMuPDF for PDFs
   - python-docx for DOCX
   - python-pptx for PPT
-  - camelot, tabula-py for table extraction
+  - camelot for table extraction
+  - PILLOW for image processing
   - Tesseract for OCR
   - Flask for backend
   - SBERT for redundancy removal
-  - BERT, T5 for summarization
+  - BART, T5 for summarization
 - **Deployment**:
   - Docker
   - Vercel for hosting
