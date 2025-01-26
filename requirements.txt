@@ -7,3 +7,6 @@ pytesseract
 pillow
 camelot-py[cv]
 pandas
+opencv-python
+tensorflow
+glob2

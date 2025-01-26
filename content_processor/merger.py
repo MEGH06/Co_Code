@@ -9,7 +9,6 @@ def merge_content(content):
     consolidated_tables = filter_tables(content["tables"])
     consolidated_images = filter_images(content["images"])
     # Create functions separately for deciding tables and images
-
     return {
         "text": summarized_text,
         "tables": consolidated_tables,
