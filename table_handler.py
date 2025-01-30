@@ -2,7 +2,7 @@ from docx import Document
 import pandas as pd
 from file_handler.pdf_handler import extract_pdf_content  # Import dictionary from pdf_handler
 from file_handler.docx_handler import extract_docx_content  # Import dictionary from docx_handler
-from file_handler.ppt_handler import extract_text_from_pptx  # Import dictionary from ppt_handler
+from file_handler.ppt_handler import extract_pptx_content  # Import dictionary from ppt_handler
 
 pdf_file_path=""
 docx_file_path=""
@@ -10,7 +10,7 @@ ppt_file_path=""
 
 tables=extract_pdf_content(pdf_file_path)["tables"]
 tables=tables.append(extract_docx_content(docx_file_path)["tables"])
-tables=tables.append(extract_text_from_pptx(ppt_file_path)["tables"])
+tables=tables.append(extract_pptx_content(ppt_file_path)["tables"])
 
 # Function to extract tables from the dictionaries
 def extract_tables_from_files(file_dicts):

@@ -15,4 +15,4 @@ def clean_text(text_list):
         text_list[i] = text
     return text_list
 
-print(clean_text(["Hello, world!", "This is a test.", "The code is running.", "The cat ate the dog"]))
+# print(clean_text(["Hello, world!", "This is a test.", "The code is running.", "The cat ate the dog"]))
