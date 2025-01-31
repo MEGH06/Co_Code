@@ -5,7 +5,7 @@ from file_handler.ppt_handler import extract_pptx_content
 from file_handler.pdf_handler import extract_pdf_content
 
 # Configure Gemini API (Replace with your API key)
-genai.configure(api_key="AIzaSyDChCAmjft0N832qs4F5qd5e2QacUlI838")
+genai.configure(api_key="API_KEY")
 
 def extract_content(file_path):
     """Extracts text from a given document based on its file type."""
