@@ -10,3 +10,4 @@ pandas
 opencv-python
 tensorflow
 glob2
+matplotlib
