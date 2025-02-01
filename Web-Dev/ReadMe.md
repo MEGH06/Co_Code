@@ -16,7 +16,7 @@ AI-Powered Study Assistant is a React-based web application that helps users eff
 
 ## Tech Stack
 - **Frontend**: React, Tailwind CSS
-- **Backend**: Node.js, Express (optional)
+- **Backend**: Node.js
 - **AI Services**: Gemini API
 
 
