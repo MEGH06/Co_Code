@@ -12,3 +12,4 @@ tensorflow
 glob2
 matplotlib
 nltk
+flask
